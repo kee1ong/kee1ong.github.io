@@ -5,15 +5,56 @@
   
 
   
-  <title>Kee1ong&#39;s Blog</title>
+  <title>【GKCTF2020】Web部分Writeup——PartII | Kee1ong&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Kee1ong&#39;s Blog">
-<meta property="og:url" content="https://kee1ong.github.io/index.html">
+  <meta name="description" content="休息日补一下GKCTF Web部分剩下的题。 总的来说难度都不大，基本都是在现成的CVE上进行了更改。但自己做题时间有点过慢，估计还是不熟练吧。继续努力。 [GKCTF2020]EZ三剑客–EzWeb考点：SSRF bypass+Redis未授权进去后F12看源码，有注释提示：  那我们传个参试一下，应该是输出了ipconfig的结果。可以看到存在内网：173.37.86.X  结合题目输入框的U">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【GKCTF2020】Web部分Writeup——PartII">
+<meta property="og:url" content="https://kee1ong.github.io/2020/08/16/gkctf2/index.html">
 <meta property="og:site_name" content="Kee1ong&#39;s Blog">
+<meta property="og:description" content="休息日补一下GKCTF Web部分剩下的题。 总的来说难度都不大，基本都是在现成的CVE上进行了更改。但自己做题时间有点过慢，估计还是不熟练吧。继续努力。 [GKCTF2020]EZ三剑客–EzWeb考点：SSRF bypass+Redis未授权进去后F12看源码，有注释提示：  那我们传个参试一下，应该是输出了ipconfig的结果。可以看到存在内网：173.37.86.X  结合题目输入框的U">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200813135842655.png">
+<meta property="og:image" content="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200813135923748.png">
+<meta property="og:image" content="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200813140636504.png">
+<meta property="og:image" content="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200813141704477.png">
+<meta property="og:image" content="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200813141726512.png">
+<meta property="og:image" content="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200813142417824.png">
+<meta property="og:image" content="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200813142847600.png">
+<meta property="og:image" content="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200813142937477.png">
+<meta property="og:image" content="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200813144218020.png">
+<meta property="og:image" content="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200813144236717.png">
+<meta property="og:image" content="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200813145957028.png">
+<meta property="og:image" content="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200813150049502.png">
+<meta property="og:image" content="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200813151810100.png">
+<meta property="og:image" content="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200813152022138.png">
+<meta property="og:image" content="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200813152108491.png">
+<meta property="og:image" content="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200814130811663.png">
+<meta property="og:image" content="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200814131358407.png">
+<meta property="og:image" content="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200814131454306.png">
+<meta property="og:image" content="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200814131555116.png">
+<meta property="og:image" content="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200814133223362.png">
+<meta property="og:image" content="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200814133147043.png">
+<meta property="og:image" content="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200814142140335.png">
+<meta property="og:image" content="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200814144136556.png">
+<meta property="og:image" content="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200814144358885.png">
+<meta property="og:image" content="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200814144541265.png">
+<meta property="og:image" content="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200814145036869.png">
+<meta property="og:image" content="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200814145202026.png">
+<meta property="og:image" content="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200814145251445.png">
+<meta property="og:image" content="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200814145639116.png">
+<meta property="og:image" content="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200814145650197.png">
+<meta property="og:image" content="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200815095936218.png">
+<meta property="og:image" content="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200815104138963.png">
+<meta property="og:image" content="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200815110450713.png">
+<meta property="og:image" content="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200815110602828.png">
+<meta property="og:image" content="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200815110640730.png">
+<meta property="article:published_time" content="2020-08-16T10:53:35.000Z">
+<meta property="article:modified_time" content="2020-08-16T10:55:33.534Z">
 <meta property="article:author" content="Kee1ongZ">
+<meta property="article:tag" content="GKCTF2020">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200813135842655.png">
   
     <link rel="alternate" href="/atom.xml" title="Kee1ong&#39;s Blog" type="application/atom+xml">
   
@@ -62,9 +103,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-gkctf2" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-gkctf2" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/08/16/gkctf2/" class="article-date">
   <time datetime="2020-08-16T10:53:35.000Z" itemprop="datePublished">2020-08-16</time>
@@ -77,8 +116,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/16/gkctf2/">【GKCTF2020】Web部分Writeup——PartII</a>
+    <h1 class="article-title" itemprop="name">
+      【GKCTF2020】Web部分Writeup——PartII
     </h1>
   
 
@@ -253,60 +292,19 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/08/16/hello-world/" class="article-date">
-  <time datetime="2020-08-16T09:41:45.164Z" itemprop="datePublished">2020-08-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/16/hello-world/">Hello World</a>
-    </h1>
+    <a href="/2020/08/16/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kee1ong.github.io/2020/08/16/hello-world/" data-id="ckdwx106c0000shfybg4y4ske" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
   
 </article>
-
-
-  
-
 
 </section>
         
